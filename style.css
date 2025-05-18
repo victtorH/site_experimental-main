@@ -243,13 +243,17 @@ div{
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: var(--cordois);
+    color: transparent;
     position: absolute;
     width: 95%;
     height:90%;
     border-radius:1em;
     text-decoration: none;
+    transition: all 0.5s ease-in-out;
     
+  }
+  a:hover{
+    color:var(--cordois);
   }
 }
 }
@@ -280,7 +284,7 @@ backdrop-filter:blur(10px);
   }
   a{
     position: absolute;
-    color: var(--cordois);
+    color: transparent;
     background-image: linear-gradient(to top, black, transparent);
     width: 95%;
     height: 90%;
@@ -291,6 +295,11 @@ backdrop-filter:blur(10px);
     font-size: 2em;
     font-weight: 500;
     text-decoration: none;
+   transition: all 0.5s ease-in-out;
+    
+  }
+  a:hover{
+    color:var(--cordois);
   }
 }
 .linear{
@@ -349,6 +358,7 @@ backdrop-filter:blur(10px);
 [data-topo="topo"]{
   top:5em;
   opacity: 0;
+  position: absolute;
 
 }
 .baixo{
@@ -662,16 +672,45 @@ i{
 color: var(--corparagrafo); 
 direction: ltr;
 }
-/* parte do frame */
-.iframe{
-  width: 100%;
-display: flex;
-justify-content: center;
-align-items: center;
-text-align: center;
- margin: 5% 0%;  
-  
+/* parte do meio */
+#meio{
+  scroll-margin-top:91.5px;
 }
+.sessao{
+  width: 100%;
+  
+  position: relative;
+  z-index: 1;
+  background-color: var(--corum);
+  display: flex;
+
+  h2{
+    margin:4% 5%;
+   font-family: "Bebas Neue", sans-serif;
+   font-size: 4em;
+  }
+}
+.aba{
+  width: 20%;
+  background-color: var(--cordois);
+  height: 100%;
+  border-radius: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.topic{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius:0.5em ;
+  height: 2em;
+  background-color: var(--cordois);
+  margin:6% 5%;
+  box-shadow: 1px 1px 10px 0.5px rgba(0, 0, 0, 0.128);
+}
+
 
 /* parte das fotos que se mechem */
 #parte1, #parte2{

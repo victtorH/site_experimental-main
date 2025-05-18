@@ -17,7 +17,9 @@ var linear = document.querySelector('.linear')
 
 
 window.addEventListener('load',()=>{
-  linear.classList.add('baixo')
+
+     linear.classList.add('baixo')
+  
 })
 
 
