@@ -1,7 +1,7 @@
 // header
 const tudo = document.getElementById('tudo')
 const nav = document.querySelector('.respo')
-const ul = document.querySelector('.ul')
+const navbar = document.querySelector('#tudo')
 const al = document.querySelectorAll('.al')
 const btn = document.getElementById('pesquisa')
 const graf = document.querySelector('div.graf')
@@ -14,6 +14,7 @@ var esp4 = document.querySelector('.esp4')
 var topo = document.querySelectorAll('[data-topo]')
 var linear = document.querySelector('.linear')
 var portas = document.querySelectorAll('[data-porta]')
+let carrosel = document.querySelector('.carrosel')
 
 
 
@@ -32,16 +33,16 @@ window.addEventListener('load',()=>{
  const windowof = window.pageYOffset
 topo.forEach( Element => {   
     
-if(windowof > Element.offsetTop +385 ){
+if(windowof > Element.offsetTop +185 ){
 
      Element.classList.remove('baixo')
-      ul.style = ('box-shadow: 1px 1px 10px 0.5px rgba(0, 0, 0, 0.18);margin-top:2em;')
+      navbar.style = ('box-shadow: 1px 1px 10px 0.5px rgba(0, 0, 0, 0.08);margin-top:0.5em;')
      
 }else if(windowof > Element.offsetTop -200 ) {
   
       Element.classList.add('baixo')
     
-      ul.style = (' background-color: transparent; box-shadow:none;margin-top:0px;')
+      navbar.style = (' background-color: transparent; box-shadow:none;margin-top:0px;')
 }})})
 
  window.addEventListener('scroll', ( ) => {
@@ -64,7 +65,7 @@ var anime = document.querySelectorAll('[data-anime]')
  const windowof = window.pageYOffset
 anime.forEach( Element => {   
     
-if(windowof > Element.offsetTop - 400  ){
+if(windowof > Element.offsetTop - 350  ){
         Element.classList.add('entrou')
  
 }else{
@@ -74,10 +75,6 @@ if(windowof > Element.offsetTop - 400  ){
 
 
 
-function movimento(valor,a,b) {
-        valor.addEventListener('mouseenter',a)
-        valor.addEventListener('mouseleave',b)
-}
 function click(clickando,a) {
     clickando.addEventListener('click',a)
 }
@@ -85,6 +82,7 @@ function click(clickando,a) {
 
 click(tudo,puxando)
 click(int,mexendo)
+
 
   let contador = 0
     let conta = 1
@@ -137,55 +135,228 @@ let contaimg = 0
 
 var topics = document.querySelectorAll('.topic')
 
+
+  topics.forEach((topic, listaNum)=>{
+    topic.addEventListener('click',()=>{
+    contaimg = listaNum;
+       if( contaimg  == listaNum){
+
+        mostrarimg()
+       }
+
+  })
+  
+ })
+
 function mostrarimg(){
   let imgativa = document.querySelector('.img.ativo');
   var img = document.querySelectorAll('.img')
 
     let topicativo = document.querySelector('.sessao .topic.ativo')
-    
 
 
+  if(imgativa == img[contaimg]){  
 
-  if(imgativa == img[contaimg]){
+   if(contaimg < 3 ){
 
-  if(contaimg < 3 ){
-    contaimg++
-     
+      contaimg++
   }else{
     contaimg = 0
   }
-  }else{
-    console.log(contaimg)
-   topics[contaimg].classList.add('ativo')
-    topicativo.classList.remove('ativo')
 
+  }else{
+  
+    topicativo.classList.remove('ativo')
+    topics[contaimg].classList.add('ativo')
+    
+
+  carrosel.style = ('left:47%;opacity:0;trasnform:scale(.9)')
   imgativa = imgativa.classList.remove('ativo')
+
+    setTimeout(()=>{
+carrosel.style = ('left:30%;opacity:0; trasnform:scale(1.2);')
+  },700)
+
   setTimeout(()=>{
 img = img[contaimg].classList.add('ativo')
-  },500)
-
-}
-    
-}
-
-setInterval(mostrarimg,6000)
-
-  topics.forEach((topic, listaNum)=>{
-
-    topic.addEventListener('dblclick',()=>{
-    contaimg = listaNum;
-     mostrarimg()
-  })
-    topic.addEventListener('click',()=>{
-    contaimg = listaNum;
-   
-    mostrarimg()
-
-    
-  })
+carrosel.style = ('left:45%;opacity:1; trasnform:scale(1);')
+  },900)
   
- })
 
+}
+    
+}
+
+
+
+let pause = document.querySelector('.pause')
+let despuse = document.querySelector('.despause')
+
+carroselTime = setInterval(mostrarimg, 2000)
+
+carrosel.addEventListener('mouseenter', ()=>{
+
+  despuse.classList.remove('ativo')
+  pause.classList.add('ativo')
+
+  clearInterval(carroselTime)
+  
+})
+
+
+
+carrosel.addEventListener('mouseleave', ()=>{
+
+  pause.classList.remove('ativo')
+  despuse.classList.add('ativo')
+
+  carroselTime = setInterval(mostrarimg, 2000)
+})
+
+
+
+
+  let arrowequerda = document.querySelector('.arrow.esquerda') 
+  let arrowdireita = document.querySelector('.arrow.direita')  
+  let slides = document.querySelectorAll('.slide')
+  let slideativo = document.querySelector('.slide.ativo')
+  let ver = document.querySelectorAll('.ver')
+  let penumbra = document.querySelectorAll('.penumbra')
+  let penumbradois = document.querySelectorAll('.penumbradois')
+
+  let contando = 0
+
+   arrowequerda.addEventListener('click', ()=>{
+  slides[0].classList.remove('esquerda','esquerdacentro','esquerdaponta')
+  slides[1].classList.remove('esquerda','esquerdacentro','esquerdaponta')
+  slides[2].classList.remove('esquerda','esquerdacentro','esquerdaponta')
+
+  setTimeout(()=>{
+    contando--
+ if(contando <= 1){
+      
+    slides[2].classList.remove('direita')
+    slides[2].classList.add('direitacentro','ativo')
+
+    slides[1].classList.remove('ativo','direitacentro')
+    slides[1].classList.add('direitaponta')
+
+    slides[0].classList.remove('direitaponta')
+    slides[0].classList.add('direita')
+
+    contando = 4
+
+  }else if(contando == 2){
+    slides[2].classList.remove('direitacentro','ativo',)
+    slides[2].classList.add('direitaponta')
+
+    slides[1].classList.remove('direitaponta')
+    slides[1].classList.add('direita')
+
+    slides[0].classList.remove('direita')
+    slides[0].classList.add('direitacentro', 'ativo')
+  }else if(contando == 3){
+    slides[2].classList.remove('direitaponta')
+    slides[2].classList.add('direita')
+
+    slides[1].classList.remove('direita')
+    slides[1].classList.add('direitacentro','ativo')
+
+    slides[0].classList.remove('direitacentro', 'ativo')
+    slides[0].classList.add('direitaponta')
+    
+    
+  }
+  },100)
+  }) 
+  
+arrowdireita.addEventListener('click', ()=>{
+slides[0].classList.remove('direita','direitacentro','direitaponta')
+slides[1].classList.remove('direita','direitacentro','direitaponta')
+slides[2].classList.remove('direita','direitacentro','direitaponta')
+
+setTimeout(()=>{
+
+  contando++
+
+  if(contando == 1){
+    slides[2].classList.remove('esquerda')
+    slides[2].classList.add('esquerdacentro','ativo')
+
+    slides[1].classList.remove('ativo','esquerdacentro')
+    slides[1].classList.add('esquerdaponta')
+
+    slides[0].classList.remove('esquerdaponta')
+    slides[0].classList.add('esquerda')
+  }else if(contando == 2){
+    slides[2].classList.remove('esquerdacentro','ativo',)
+    slides[2].classList.add('esquerdaponta')
+
+    slides[1].classList.remove('esquerdaponta',)
+    slides[1].classList.add('esquerda')
+
+    slides[0].classList.remove('esquerda')
+    slides[0].classList.add('esquerdacentro', 'ativo')
+  }else if(contando == 3){
+    slides[2].classList.remove('esquerdaponta')
+    slides[2].classList.add('esquerda')
+
+    slides[1].classList.remove('esquerda')
+    slides[1].classList.add('esquerdacentro','ativo')
+
+    slides[0].classList.remove('esquerdacentro', 'ativo')
+    slides[0].classList.add('esquerdaponta')
+
+    contando = 0
+  }
+  
+},100)
+})
+
+
+ver.forEach((Elemento, Numelemento)=>{
+
+Elemento.addEventListener('mouseenter',( )=>{
+  
+  let penumbra = document.querySelectorAll('.penumbra')
+  let penumbradois = document.querySelectorAll('.penumbradois')
+
+
+    penumbra[Numelemento].classList.add('verhover')
+    penumbradois[Numelemento].classList.add('verhover')
+    setTimeout(()=>{
+      Elemento.innerHTML = ('<p class="projeto">ver projeto </p> <div class="seta"><i class="fa-solid fa-location-arrow"></i></div> ')
+      setTimeout(()=>{
+      let paragrafo = Elemento.querySelector('p')
+      paragrafo.style = ('color:rgb(255, 255, 255);')
+
+      },500) },100)
+    
+  })
+    
+  Elemento.addEventListener('mouseleave',( )=>{
+    let paragrafo = Elemento.querySelector('p')
+    setTimeout(()=>{
+      let paragrafo = Elemento.querySelector('p')
+      paragrafo.style = ('color:transparent;')
+   paragrafo.remove()
+    },200)
+    
+   setTimeout(()=>{
+
+      penumbra[Numelemento].classList.remove('verhover')
+    penumbradois[Numelemento].classList.remove('verhover')
+    
+    
+    
+   },500)
+    
+
+  })
+
+})
+
+  
 
 
 function puxando(){
@@ -193,14 +364,14 @@ function puxando(){
      if(conta > contador){
         
  tudo.classList.add('tudostyle')
-  ul.classList.add('ulstyle')
-   nav.classList.add('navstyle')
+  navbar.classList.add('navbarstyle')
+   nav.classList.add('navbarstyle')
 
 
     contador++
     }else{
       tudo.classList.remove('tudostyle')
-      ul.classList.remove('ulstyle')
+      navbar.classList.remove('navbarstyle')
       nav.classList.remove('navstyle')
 
         conta++
