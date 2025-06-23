@@ -993,7 +993,7 @@ animation-name:esquerdaponta;
 }
 
 
-@keyframes direita {
+@keyframes direitaponta{
   0%{
    transform: translate(-190%,-30%);
     
@@ -1014,9 +1014,9 @@ animation-name:esquerdaponta;
 }
 
 
-@keyframes direitaponta{
+@keyframes direita{
   0%{
-   transform: translate(-50%,-30%);
+   transform: translate(-50%,-40%);
     
   }
   100%{
@@ -1054,6 +1054,18 @@ background-repeat: no-repeat;
 height: auto;
 background-size: 100% 100%;
 background-position-y: bottom;
+object-fit: cover;
+transition: all 1s ease-in-out;
+}
+.projetocurso{
+  background-image: url(galeria/projetocurso.png);
+width: 50%;
+border-radius: 1rem;
+background-repeat: no-repeat;
+height: auto;
+background-size: 120% 100%;
+background-position-y: top;
+background-position-x: center;
 object-fit: cover;
 transition: all 1s ease-in-out;
 }

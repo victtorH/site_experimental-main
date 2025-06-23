@@ -225,59 +225,70 @@ carrosel.addEventListener('mouseleave', ()=>{
   let penumbradois = document.querySelectorAll('.penumbradois')
 
   let contando = 0
+  
 
    arrowequerda.addEventListener('click', ()=>{
-  slides[0].classList.remove('esquerda','esquerdacentro','esquerdaponta')
-  slides[1].classList.remove('esquerda','esquerdacentro','esquerdaponta')
-  slides[2].classList.remove('esquerda','esquerdacentro','esquerdaponta')
+  slides[0].classList.remove('esquerda','esquerdacentro','esquerdaponta','ativo')
+  slides[1].classList.remove('esquerda','esquerdacentro','esquerdaponta','ativo')
+  slides[2].classList.remove('esquerda','esquerdacentro','esquerdaponta','ativo')
 
   setTimeout(()=>{
     contando--
- if(contando <= 1){
-      
-    slides[2].classList.remove('direita')
-    slides[2].classList.add('direitacentro','ativo')
+    console.log(contando)
 
-    slides[1].classList.remove('ativo','direitacentro')
-    slides[1].classList.add('direitaponta')
+ if(contando <= 1){
+
+    slides[2].classList.remove('direita')
+    slides[2].classList.add('direitaponta')
+
+    slides[1].classList.remove('direitacentro','ativo')
+    slides[1].classList.add('direita')
 
     slides[0].classList.remove('direitaponta')
-    slides[0].classList.add('direita')
+    slides[0].classList.add('direitacentro','ativo')
 
     contando = 4
 
   }else if(contando == 2){
-    slides[2].classList.remove('direitacentro','ativo',)
-    slides[2].classList.add('direitaponta')
-
-    slides[1].classList.remove('direitaponta')
-    slides[1].classList.add('direita')
-
-    slides[0].classList.remove('direita')
-    slides[0].classList.add('direitacentro', 'ativo')
-  }else if(contando == 3){
-    slides[2].classList.remove('direitaponta')
+      
+    slides[2].classList.remove('direitacentro','ativo')
     slides[2].classList.add('direita')
 
-    slides[1].classList.remove('direita')
+    slides[1].classList.remove('direitaponta')
     slides[1].classList.add('direitacentro','ativo')
 
-    slides[0].classList.remove('direitacentro', 'ativo')
+    slides[0].classList.remove('direita')
     slides[0].classList.add('direitaponta')
-    
-    
+
+
+  }else if(contando == 3){
+
+   slides[2].classList.remove('direitaponta')
+    slides[2].classList.add('direitacentro','ativo')
+
+    slides[1].classList.remove('direita')
+    slides[1].classList.add('direitaponta')
+
+    slides[0].classList.remove('direitacentro','ativo')
+    slides[0].classList.add('direita')
+
   }
   },100)
   }) 
   
 arrowdireita.addEventListener('click', ()=>{
-slides[0].classList.remove('direita','direitacentro','direitaponta')
-slides[1].classList.remove('direita','direitacentro','direitaponta')
-slides[2].classList.remove('direita','direitacentro','direitaponta')
 
+slides[0].classList.remove('direita','direitacentro','direitaponta','ativo')
+slides[1].classList.remove('direita','direitacentro','direitaponta','ativo')
+slides[2].classList.remove('direita','direitacentro','direitaponta','ativo')
+contando++
+console.log(contando)
+
+
+
+function indo(){
 setTimeout(()=>{
 
-  contando++
 
   if(contando == 1){
     slides[2].classList.remove('esquerda')
@@ -309,8 +320,22 @@ setTimeout(()=>{
 
     contando = 0
   }
-  
+
 },100)
+}
+
+ if(contando == 3){
+  contando = 1
+  indo()
+  
+}else if(contando == 4 ){
+  contando = 2 
+  indo()
+}else if(contando == 5){
+  contando = 3
+  indo()
+}
+
 })
 
 
