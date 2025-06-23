@@ -216,126 +216,55 @@ carrosel.addEventListener('mouseleave', ()=>{
 
 
 
-  let arrowequerda = document.querySelector('.arrow.esquerda') 
+  let arrowesquerda = document.querySelector('.arrow.esquerda') 
   let arrowdireita = document.querySelector('.arrow.direita')  
+  let slidegeral = document.querySelector('.slides')
   let slides = document.querySelectorAll('.slide')
-  let slideativo = document.querySelector('.slide.ativo')
   let ver = document.querySelectorAll('.ver')
   let penumbra = document.querySelectorAll('.penumbra')
   let penumbradois = document.querySelectorAll('.penumbradois')
 
-  let contando = 0
+  let contando = 1
   
+function projetosMovimento(){
+  let slideativo = document.querySelectorAll('.slide.ativo')
+  slideativo.forEach((ativos)=>{
 
-   arrowequerda.addEventListener('click', ()=>{
-  slides[0].classList.remove('esquerda','esquerdacentro','esquerdaponta','ativo')
-  slides[1].classList.remove('esquerda','esquerdacentro','esquerdaponta','ativo')
-  slides[2].classList.remove('esquerda','esquerdacentro','esquerdaponta','ativo')
+  ativos.classList.remove('ativo')
+ slides[contando].classList.add('ativo')
 
-  setTimeout(()=>{
-    contando--
-    console.log(contando)
+ if(contando == 0){
+  slidegeral.classList.remove('centro', 'direita')
+  slidegeral.classList.add('esquerda')
+ }else if(contando == 1){
+  slidegeral.classList.remove('esquerda', 'direita')
+  slidegeral.classList.add('centro')
+ }else if(contando == 2){
+  slidegeral.classList.remove('esquerda', 'centro')
+  slidegeral.classList.add('direita')
+ }
 
- if(contando <= 1){
+  })
 
-    slides[2].classList.remove('direita')
-    slides[2].classList.add('direitaponta')
+}
 
-    slides[1].classList.remove('direitacentro','ativo')
-    slides[1].classList.add('direita')
-
-    slides[0].classList.remove('direitaponta')
-    slides[0].classList.add('direitacentro','ativo')
-
-    contando = 4
-
-  }else if(contando == 2){
-      
-    slides[2].classList.remove('direitacentro','ativo')
-    slides[2].classList.add('direita')
-
-    slides[1].classList.remove('direitaponta')
-    slides[1].classList.add('direitacentro','ativo')
-
-    slides[0].classList.remove('direita')
-    slides[0].classList.add('direitaponta')
-
-
-  }else if(contando == 3){
-
-   slides[2].classList.remove('direitaponta')
-    slides[2].classList.add('direitacentro','ativo')
-
-    slides[1].classList.remove('direita')
-    slides[1].classList.add('direitaponta')
-
-    slides[0].classList.remove('direitacentro','ativo')
-    slides[0].classList.add('direita')
-
-  }
-  },100)
-  }) 
-  
-arrowdireita.addEventListener('click', ()=>{
-
-slides[0].classList.remove('direita','direitacentro','direitaponta','ativo')
-slides[1].classList.remove('direita','direitacentro','direitaponta','ativo')
-slides[2].classList.remove('direita','direitacentro','direitaponta','ativo')
+arrowdireita.addEventListener('click',()=>{
 contando++
-console.log(contando)
+if(contando > 2){
+  contando = 0
 
-
-
-function indo(){
-setTimeout(()=>{
-
-
-  if(contando == 1){
-    slides[2].classList.remove('esquerda')
-    slides[2].classList.add('esquerdacentro','ativo')
-
-    slides[1].classList.remove('ativo','esquerdacentro')
-    slides[1].classList.add('esquerdaponta')
-
-    slides[0].classList.remove('esquerdaponta')
-    slides[0].classList.add('esquerda')
-  }else if(contando == 2){
-    slides[2].classList.remove('esquerdacentro','ativo',)
-    slides[2].classList.add('esquerdaponta')
-
-    slides[1].classList.remove('esquerdaponta',)
-    slides[1].classList.add('esquerda')
-
-    slides[0].classList.remove('esquerda')
-    slides[0].classList.add('esquerdacentro', 'ativo')
-  }else if(contando == 3){
-    slides[2].classList.remove('esquerdaponta')
-    slides[2].classList.add('esquerda')
-
-    slides[1].classList.remove('esquerda')
-    slides[1].classList.add('esquerdacentro','ativo')
-
-    slides[0].classList.remove('esquerdacentro', 'ativo')
-    slides[0].classList.add('esquerdaponta')
-
-    contando = 0
-  }
-
-},100)
 }
 
- if(contando == 3){
-  contando = 1
-  indo()
-  
-}else if(contando == 4 ){
-  contando = 2 
-  indo()
-}else if(contando == 5){
-  contando = 3
-  indo()
+projetosMovimento()
+})
+arrowesquerda.addEventListener('click',()=>{
+contando--
+if(contando < 0){
+contando = 2
+
 }
 
+projetosMovimento()
 })
 
 

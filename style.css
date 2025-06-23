@@ -892,11 +892,8 @@ border:none;
 
 /* ultima parte  */
 #final{
-  width: 100%;
   left:0%;
   background-color: var(--corum);
-  
-  
 }
 
 .arrow{
@@ -923,106 +920,38 @@ background-color: transparent;
 height: 100vh;
 width: 100%;
 overflow: hidden;
-margin: 0 auto;
+
+}
+.slides{
+position: absolute;
+left:50%;
+top:50%;
+height: 100%;
+width:300%;
 display: flex;
+align-items: center;
+justify-content: center;
+transition: all 1s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+
+}
+.slides.centro{
+transform: translate(-50%,-50%);
+}
+.slides.esquerda{
+transform: translate(-27%,-50%);
+}
+.slides.direita{
+transform: translate(-72%,-50%);
 }
 
 .slide.ativo{ 
 
+margin: 0% 3% ;
+transform:scale(1.05);
 opacity: 1;
 z-index: 1;
 }
 
-.slide.esquerda{
-animation-name:esquerda;
-
-}
-.slide.esquerdacentro{
-animation-name:esquerdacentro;
-
-}
-.slide.esquerdaponta{
-animation-name:esquerdaponta;
-}
-
-
-
-@keyframes esquerda {
-  0%{
-   transform: translate(70%,-30%);
-    
-  }
-  100%{
-     transform: translate(55%,-30%);
-  }
-}
-
-@keyframes esquerdacentro {
-  0%{
-   transform: translate(55%,-30%);
-    
-  }
-  100%{
-     transform: translate(-50%,-40%);
-  }
-}
-
-
-@keyframes esquerdaponta{
-  0%{
-   transform: translate(-50%,-40%);
-    
-  }
-  100%{
-     transform: translate(-155%,-30%);
-  }
-}
-
-
-
-.slide.direita{
-  animation-name: direita;
-  
-}
-.slide.direitacentro{
-  animation-name: direitacentro;
-  
-}
-.slide.direitaponta{
-  animation-name: direitaponta;
-}
-
-
-@keyframes direitaponta{
-  0%{
-   transform: translate(-190%,-30%);
-    
-  }
-  100%{
-     transform: translate(-155%,-30%);
-  }
-}
-
-@keyframes direitacentro {
-  0%{
-   transform: translate(-155%,-30%);
-    
-  }
-  100%{
-     transform: translate(-50%,-40%);
-  }
-}
-
-
-@keyframes direita{
-  0%{
-   transform: translate(-50%,-40%);
-    
-  }
-  100%{
-     transform: translate(55%,-30%);
-  }
-}
 
 
 .slide{
@@ -1030,16 +959,13 @@ animation-name:esquerdaponta;
   border-radius: 2rem;
   background-color: var(--cordois);
   opacity: .4;
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  position: relative;
   display: flex;
-  width: 75%;
+  width: 1000px;
  height: 70%;
-  transform: translate(-50%,-30%);
  justify-content: space-between;
  z-index: 0;
-  padding: 1%;
+  padding: .4%;
   animation-duration: 1s;
   animation-fill-mode: forwards;
 }
