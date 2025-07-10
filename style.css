@@ -585,7 +585,7 @@ border: 2px solid rgb(255, 165, 0);
 
 }
 .grafstyle{ transform: rotateZ(360deg);
-   border: 10px solid rgb(255, 165, 0);
+   border: 10px solid rgb(17, 0, 255);
    border-bottom-color: var(--corquatro);
    border-left-color: var(--corquatro);
     position: relative;
