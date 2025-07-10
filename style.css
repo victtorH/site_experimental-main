@@ -589,7 +589,7 @@ border: 2px solid rgb(255, 165, 0);
    border-bottom-color: var(--corquatro);
    border-left-color: var(--corquatro);
     position: relative;
-    left: 80%;
+    left: calc(100% - 95px);
 
     i{
       color: var(--cortres);
