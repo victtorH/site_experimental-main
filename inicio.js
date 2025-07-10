@@ -49,16 +49,17 @@ if(windowof > Element.offsetTop +185 ){
  const windowof = window.pageYOffset
 portas.forEach( Element => {   
     
-if(windowof > Element.offsetTop -150 ){
+if(windowof > Element.offsetTop ){
 
       Element.classList.remove('baixoporta')
 
-}else{
+}else if(windowof > Element.offsetTop -200 ) {
   
       Element.classList.add('baixoporta')
 
      
-}})})
+}
+})})
 
 var anime = document.querySelectorAll('[data-anime]')
  window.addEventListener('scroll', ( ) => {
@@ -170,16 +171,16 @@ function mostrarimg(){
     topics[contaimg].classList.add('ativo')
     
 
-  carrosel.style = ('left:47%;opacity:0;trasnform:scale(.9)')
+  carrosel.style = ('left:5%;opacity:0;trasnform:scale(.9)')
   imgativa = imgativa.classList.remove('ativo')
 
     setTimeout(()=>{
-carrosel.style = ('left:30%;opacity:0; trasnform:scale(1.2);')
+carrosel.style = ('left:-10%;opacity:0; trasnform:scale(1.2);')
   },700)
 
   setTimeout(()=>{
 img = img[contaimg].classList.add('ativo')
-carrosel.style = ('left:45%;opacity:1; trasnform:scale(1);')
+carrosel.style = ('left:1%;opacity:1; trasnform:scale(1);')
   },900)
   
 
